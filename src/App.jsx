@@ -9,7 +9,8 @@ import Footer from './components/Footer'
 import Signup from './components/Signup'
 import Manager from './components/Manager'
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 function App() {
