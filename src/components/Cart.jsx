@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+ 
 const Cart = ({ cartItems, onRemoveFromCart }) => {
   const [localCart, setLocalCart] = useState(cartItems);
   useEffect(() => {
