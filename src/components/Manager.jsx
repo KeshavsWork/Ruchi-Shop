@@ -1,19 +1,28 @@
 import React from 'react'
+import Kaju from '../assets/kaju-raw-5.jpg';
+import Almo from '../assets/Almo.jpg';
+import Pistachios from '../assets/Pistachios.jpg';
+import Kharik from '../assets/Kharik.webp';
+import Raisin from '../assets/raisin.jpg';
+import Walnut from '../assets/Walnut.jpg';
+import Figs from '../assets/Figs.png';
+import Miri from '../assets/Miri.jpg';
+import Cardamom from '../assets/Cardamom.jpg';
 
 const Manager = ({onAddToCart}) => {
   
-    const productList = [
-        {id: 0, name: 'Cashew', price: 'Rs.260/kg', image: './src/assets/kaju-raw-5.jpg'},
-        { id: 1, name: 'Almonds', price: 'Rs.240/kg', image: './src/assets/Almo.jpg' },
-        { id: 2, name: 'Pistachios', price: 'Rs.1200/kg', image: './src/assets/Pistachios.jpg' },
-        { id: 3, name: 'Kharik', price: 'Rs.320/Kg', image: './src/assets/Kharik.webp' },
-        { id: 4, name: 'Raisins', price: 'Rs.400/Kg', image: './src/assets/raisin.jpg' },
-        { id: 5, name: 'Walnuts', price: 'Rs.800/kg', image: './src/assets/Walnut.jpg' },
-        { id: 6, name: 'Figs', price: 'Rs.900/kg', image: './src/assets/Figs.png' },
-        { id: 8, name: 'Black Pepper', price: 'Rs.600/kg', image: './src/assets/Miri.jpg' },
-        { id: 9, name: 'Cardamom', price: 'Rs.1500/kg', image: './src/assets/Cardamom.jpg' }
- 
-      ];
+   const productList = [
+  { id: 0, name: 'Cashew', price: 'Rs.260/kg', image: Kaju },
+  { id: 1, name: 'Almonds', price: 'Rs.240/kg', image: Almo },
+  { id: 2, name: 'Pistachios', price: 'Rs.1200/kg', image: Pistachios },
+  { id: 3, name: 'Kharik', price: 'Rs.320/Kg', image: Kharik },
+  { id: 4, name: 'Raisins', price: 'Rs.400/Kg', image: Raisin },
+  { id: 5, name: 'Walnuts', price: 'Rs.800/kg', image: Walnut },
+  { id: 6, name: 'Figs', price: 'Rs.900/kg', image: Figs },
+  { id: 8, name: 'Black Pepper', price: 'Rs.600/kg', image: Miri },
+  { id: 9, name: 'Cardamom', price: 'Rs.1500/kg', image: Cardamom }
+];
+
   return (
     <div className='headline manbg bg-cover'>
       <div className=" text-2xl md:text-5xl flex justify-center py-8 px-3">
@@ -29,7 +38,7 @@ const Manager = ({onAddToCart}) => {
             className='product-card border rounded-lg shadow-lg p-4 hover:shadow-2xl transition duration-300'
           >
             <img
-              src={`/${product.image}`} 
+  src={product.image}
               alt={product.name}
               className='h-48 w-full lg:w-3/4 mx-auto bg-auto mb-4 rounded'
             />
