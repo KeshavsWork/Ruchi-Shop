@@ -1,17 +1,36 @@
 import React from 'react'
+import KajuRaw from 'C:/Users/wania/OneDrive/ドキュメント/Keshav/Projects/Projects/2.2/my-project/src/assets/kaju-raw-5.jpg';
+import Almo from '../assets/Almo.jpg';
+import Pistachios from '../assets/Pistachios.jpg';
+import Kharik from '../assets/Kharik.webp';
+import Raisin from '../assets/raisin.jpg';
+import Walnut from '../assets/Walnut.jpg';
+import Figs from '../assets/Figs.png';
+import Miri from '../assets/Miri.jpg';
+import Cardamom from '../assets/Cardamom.jpg';
 
 const Manager = ({onAddToCart}) => {
   
     const productList = [
-        {id: 0, name: 'Cashew', price: 'Rs.260/kg', image: './src/assets/kaju-raw-5.jpg'},
+    //      { id: 0, name: 'Cashew', price: 'Rs.260/kg', image: KajuRaw },
+    // { id: 1, name: 'Almonds', price: 'Rs.240/kg', image: Almo },
+    // { id: 2, name: 'Pistachios', price: 'Rs.1200/kg', image: Pistachios },
+    // { id: 3, name: 'Kharik', price: 'Rs.320/Kg', image: Kharik },
+    // { id: 4, name: 'Raisins', price: 'Rs.400/Kg', image: Raisin },
+    // { id: 5, name: 'Walnuts', price: 'Rs.800/kg', image: Walnut },
+    // { id: 6, name: 'Figs', price: 'Rs.900/kg', image: Figs },
+    // { id: 8, name: 'Black Pepper', price: 'Rs.600/kg', image: Miri },
+    // { id: 9, name: 'Cardamom', price: 'Rs.1500/kg', image: Cardamom }
+            {id: 0, name: 'Cashew', price: 'Rs.260/kg', image: './src/assets/kaju-raw-5.jpg'},
         { id: 1, name: 'Almonds', price: 'Rs.240/kg', image: './src/assets/Almo.jpg' },
         { id: 2, name: 'Pistachios', price: 'Rs.1200/kg', image: './src/assets/Pistachios.jpg' },
         { id: 3, name: 'Kharik', price: 'Rs.320/Kg', image: './src/assets/Kharik.webp' },
         { id: 4, name: 'Raisins', price: 'Rs.400/Kg', image: './src/assets/raisin.jpg' },
         { id: 5, name: 'Walnuts', price: 'Rs.800/kg', image: './src/assets/Walnut.jpg' },
-        { id: 6, name: 'Figs', price: 'Rs.900/kg', image: './src/assets/Figs.jpg' },
+        { id: 6, name: 'Figs', price: 'Rs.900/kg', image: './src/assets/Figs.png' },
         { id: 8, name: 'Black Pepper', price: 'Rs.600/kg', image: './src/assets/Miri.jpg' },
         { id: 9, name: 'Cardamom', price: 'Rs.1500/kg', image: './src/assets/Cardamom.jpg' }
+ 
       ];
   return (
     <div className='headline manbg bg-cover'>
@@ -20,7 +39,7 @@ const Manager = ({onAddToCart}) => {
       </div>
 
       <div className='products-container p-8 '>
-      <h1 className='font-bold text-3xl mb-6 text-center'>Our Products</h1>
+      <h1 className='font-bold text-4xl mb-6 text-center'>Our Products</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 bg-{wheat}'>
         {productList.map((product) => (
           <div
