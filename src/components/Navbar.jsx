@@ -15,12 +15,14 @@ const Navbar = () => {
             <Link to="/cart">
             <button>
                 <img src="/cart.png" alt="" className='invert'/>
+                {/* <img src="/src/assets/cart.png" alt="" className=''/>  */}
             </button>
             </Link>
         </div>
         <Link to="/login">
         <button>
             <img src="/login.png" alt="" className='invert w-16' />
+            {/* <img src="/src/assets/login.png" alt="" className=' w-16' />  */}
         </button>
         </Link>
       </div>
