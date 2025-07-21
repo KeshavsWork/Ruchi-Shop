@@ -25,11 +25,12 @@ const Manager = ({onAddToCart}) => {
 ];
 
   return (
-    <div className='headline manbg bg-cover'>
-        style={{
+    <div className='headline manbg bg-cover'
+      style={{
     backgroundImage: `url(${ManagerBg})`,
   }}
-
+>
+      
       <div className=" text-2xl md:text-5xl flex justify-center py-8 px-3">
           Straight from nature to your home. 
       </div>
