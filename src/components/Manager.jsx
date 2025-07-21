@@ -8,6 +8,7 @@ import Walnut from '../assets/Walnut.jpg';
 import Figs from '../assets/Figs.png';
 import Miri from '../assets/Miri.jpg';
 import Cardamom from '../assets/Cardamom.jpg';
+import ManagerBg from '../assets/Manager.jpg';
 
 const Manager = ({onAddToCart}) => {
   
@@ -25,6 +26,10 @@ const Manager = ({onAddToCart}) => {
 
   return (
     <div className='headline manbg bg-cover'>
+        style={{
+    backgroundImage: `url(${ManagerBg})`,
+  }}
+
       <div className=" text-2xl md:text-5xl flex justify-center py-8 px-3">
           Straight from nature to your home. 
       </div>

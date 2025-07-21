@@ -14,13 +14,13 @@ const Navbar = () => {
         <div className="cart flex justify-end ">
             <Link to="/cart">
             <button>
-                <img src="/src/assets/cart.png" alt="" className='invert'/>
+                <img src="/cart.png" alt="" className='invert'/>
             </button>
             </Link>
         </div>
         <Link to="/login">
         <button>
-            <img src="/src/assets/login.png" alt="" className='invert w-16' />
+            <img src="/login.png" alt="" className='invert w-16' />
         </button>
         </Link>
       </div>
