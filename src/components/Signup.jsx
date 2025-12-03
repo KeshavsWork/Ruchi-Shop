@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Signup = () => {
   return (
     <div className="h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/src/assets/Manager.jpg')" }}>
-      <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-2xl shadow-lg w-96">
+      <div className="bg-white bg-opacity-10 backdrop-blur-md p-12 rounded-2xl shadow-lg w-96">
         <h2 className="text-orange-600 text-3xl font-bold text-center mb-6">Create an Account</h2>
         <form>
           <div className="mb-4">
-            <label className="text-black block text-sm font-semibold">Full Name</label>
+            <label className="text-black block text-lg font-semibold">Full Name</label>
             <input
               type="text"
               placeholder="Enter your full name"
@@ -16,7 +16,7 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="text-black block text-sm font-semibold">Email</label>
+            <label className="text-black block text-lg font-semibold">Email</label>
             <input
               type="email"
               placeholder="Enter your email"
@@ -24,7 +24,7 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="text-black block text-sm font-semibold">Password</label>
+            <label className="text-black block text-lg font-semibold">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
