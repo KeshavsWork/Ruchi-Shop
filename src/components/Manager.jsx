@@ -11,7 +11,7 @@ import Walnut from '../assets/Walnut.jpg';
 import Figs from '../assets/Figs.png';
 import Miri from '../assets/Miri.jpg';
 import Cardamom from '../assets/Cardamom.jpg';
-import ManagerBg from '/Manager.jpg';
+import ManagerBg from '.../public/Manager.jpg';
 
 const Manager = ({ onAddToCart, onRemoveFromCart }) => {
   const productList = [
