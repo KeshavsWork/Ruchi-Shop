@@ -15,8 +15,8 @@ import ManagerBg from '/Manager.jpg';
 
 const Manager = ({ onAddToCart, onRemoveFromCart }) => {
   const productList = [
-    { id: 0, name: 'Cashew', price: 'Rs.260/kg', image: Kaju },
-    { id: 1, name: 'Almonds', price: 'Rs.240/kg', image: Almo },
+    { id: 0, name: 'Cashew', price: 'Rs.1020/kg', image: Kaju },
+    { id: 1, name: 'Almonds', price: 'Rs.960/kg', image: Almo },
     { id: 2, name: 'Pistachios', price: 'Rs.1400/kg', image: Pistachios },
     { id: 3, name: 'Kharik', price: 'Rs.320/Kg', image: Kharik },
     { id: 4, name: 'Raisins', price: 'Rs.650/Kg', image: Raisin },
@@ -25,6 +25,12 @@ const Manager = ({ onAddToCart, onRemoveFromCart }) => {
     { id: 8, name: 'Black Pepper', price: 'Rs.450/250g', image: Miri },
     { id: 9, name: 'Cardamom', price: 'Rs.1400/250g', image: Cardamom }
   ];
+const parseUnitPrice = (price) => {
+  if (typeof price === "number") return price;
+  if (!price) return 0;
+  const match = String(price).replace(",", "").match(/(\d+(\.\d+)?)/);
+  return match ? parseFloat(match[0]) : 0;
+};
 
   // qty per product (default 1)
   const [qtys, setQtys] = useState(() =>
@@ -38,14 +44,23 @@ const Manager = ({ onAddToCart, onRemoveFromCart }) => {
   const setQty = (id, val) => setQtys(prev => ({ ...prev, [id]: val }));
 
   const handleAdd = (product) => {
-    const qty = qtys[product.id] || 1;
-    // call parent's handler
-    if (onAddToCart) onAddToCart(product, qty);
+  const qty = qtys[product.id] || 1;
 
-    // show toast with undo option
-    setLastAdded({ product, qty });
-    setToastVisible(true);
+  const unit = parseUnitPrice(product.price);
+
+  const normalizedProduct = {
+    id: product.id,
+    name: product.name,
+    image: product.image,
+    priceUnit: unit,
+    priceLabel: product.price,
   };
+
+  if (onAddToCart) onAddToCart(normalizedProduct, qty);
+
+  setLastAdded({ product: normalizedProduct, qty });
+  setToastVisible(true);
+};
 
   const handleUndo = () => {
     if (onRemoveFromCart && lastAdded) {

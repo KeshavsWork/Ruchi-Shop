@@ -1,15 +1,14 @@
-// src/components/CartPage.jsx
 import React from 'react';
 import Navbar from './Navbar';
 import Cart from './Cart';
 import Footer from './Footer';
 
-const CartPage = ({ cartItems, onRemoveFromCart }) => {
+const CartPage = ({ cartItems, onRemoveFromCart, onUpdateQty }) => {
   return (
     <>
       <Navbar />
-      <Cart cartItems={cartItems} onRemoveFromCart={onRemoveFromCart} />
-      <Footer />
+      <Cart cartItems={cartItems} onRemoveFromCart={onRemoveFromCart} onUpdateQty={onUpdateQty} />
+      <Footer />  
     </>
   );
 };
