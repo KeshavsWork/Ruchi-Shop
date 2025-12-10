@@ -22,11 +22,10 @@ const parseUnitPrice = (price) => {
 };
 
 function App() {
-  // load cart from localStorage (expecting normalized shape), fallback to [].
+  // ✅ Load & normalize cart from localStorage
   const [cartItems, setCartItems] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('cart')) || [];
-      // If saved items are old format (no priceUnit or qty), normalize them
       return saved.map(item => {
         if (item.priceUnit) return item;
         const unit = parseUnitPrice(item.price ?? item.priceLabel);
@@ -39,51 +38,69 @@ function App() {
           qty: item.qty ?? 1
         };
       });
-    } catch (e) {
+    } catch {
       return [];
     }
   });
 
+  // ✅ Keep localStorage synced
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Add product with qty (product comes from Manager)
- const handleAddToCart = (product, qty = 1) => {
-  setCartItems(prev => {
-    const idx = prev.findIndex(p => p.id === product.id);
+  // ✅ ADD TO CART (LIVE NAVBAR UPDATE)
+  const handleAddToCart = (product, qty = 1) => {
+    setCartItems((prev) => {
+      const idx = prev.findIndex(p => p.id === product.id);
+      let updatedCart;
 
-    if (idx !== -1) {
-      const copy = [...prev];
-      copy[idx].qty += qty;
-      return copy;
-    }
-
-    return [
-      ...prev,
-      {
-        ...product,  // includes priceUnit, priceLabel
-        qty
+      if (idx !== -1) {
+        const copy = [...prev];
+        copy[idx].qty += qty;
+        updatedCart = copy;
+      } else {
+        updatedCart = [
+          ...prev,
+          {
+            ...product,  // includes priceUnit, priceLabel
+            qty
+          }
+        ];
       }
-    ];
-  });
-};
 
+      // ✅ Instant navbar update
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      window.dispatchEvent(new Event("storage"));
 
-  // Remove by index (used by Cart)
+      return updatedCart;
+    });
+  };
+
+  // ✅ REMOVE FROM CART (LIVE NAVBAR UPDATE)
   const handleRemoveFromCart = (index) => {
-    setCartItems(prev => {
+    setCartItems((prev) => {
       const updated = prev.filter((_, i) => i !== index);
+
+      // ✅ Instant navbar update
+      localStorage.setItem("cart", JSON.stringify(updated));
+      window.dispatchEvent(new Event("storage"));
+
       return updated;
     });
   };
 
-  // Update quantity for item at index
+  // ✅ UPDATE QTY (LIVE NAVBAR UPDATE)
   const handleUpdateQty = (index, newQty) => {
-    setCartItems(prev => {
+    setCartItems((prev) => {
       const copy = [...prev];
       if (!copy[index]) return prev;
+
       copy[index] = { ...copy[index], qty: newQty };
+
+      // ✅ Instant navbar update
+      localStorage.setItem("cart", JSON.stringify(copy));
+      window.dispatchEvent(new Event("storage"));
+
       return copy;
     });
   };
@@ -92,18 +109,21 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <BrowserRouter>
         <Routes>
+
+          {/* ✅ HOME */}
           <Route
             path="/"
             element={
               <>
                 <Navbar />
                 <Search />
-                {/* Manager should call onAddToCart(product, qty) */}
                 <Manager onAddToCart={handleAddToCart} />
                 <Footer />
               </>
             }
           />
+
+          {/* ✅ CART */}
           <Route
             path="/cart"
             element={
@@ -114,9 +134,12 @@ function App() {
               />
             }
           />
+
+          {/* ✅ OTHER ROUTES */}
           <Route path="/payment" element={<><Navbar /><Payment /><Footer /></>} />
           <Route path="/login" element={<><Navbar /><Login /><Footer /></>} />
           <Route path="/signup" element={<><Navbar /><Signup /><Footer /></>} />
+
         </Routes>
       </BrowserRouter>
     </div>

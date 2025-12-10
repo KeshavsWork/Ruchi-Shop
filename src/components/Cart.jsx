@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const formatPrice = (num) => (Number.isInteger(num) ? num : Number(num.toFixed(2)));
 
 const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
-  // local copy for instant UI updates
   const [localCart, setLocalCart] = useState(cartItems);
 
   useEffect(() => {
@@ -16,15 +15,19 @@ const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
     const updated = [...localCart];
     updated[index] = { ...updated[index], qty: newQty };
     setLocalCart(updated);
-
     if (onUpdateQty) onUpdateQty(index, newQty);
   };
 
-  const totalPrice = localCart.reduce((sum, item) => {
+  // ✅ SUBTOTAL
+  const subTotal = localCart.reduce((sum, item) => {
     const unit = item.priceUnit ?? 0;
     const qty = item.qty ?? 1;
     return sum + unit * qty;
   }, 0);
+
+  // ✅ DISCOUNT LOGIC
+  const discount = subTotal > 2500 ? 150 : 0;
+  const finalTotal = subTotal - discount;
 
   return (
     <div className="p-6">
@@ -41,46 +44,25 @@ const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
               const itemTotal = unit * qty;
 
               return (
-                <div key={item.id ?? index} className="border rounded-lg shadow-lg p-4 flex flex-col items-center">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="h-36 w-full lg:w-3/4 mb-4 rounded object-contain"
-                  />
+                <div key={index} className="border rounded-lg shadow-lg p-4 flex flex-col items-center">
+                  <img src={item.image} alt={item.name} className="h-36 w-full lg:w-3/4 mb-4 rounded object-contain" />
 
                   <h2 className="text-xl font-semibold">{item.name}</h2>
-                  <p className="text-gray-600">{item.priceLabel ?? `Rs.${formatPrice(unit)}`}</p>
-                  {/* <p className="text-gray-500 text-sm">Quality Assured | Freshly Packed</p> */}
+                  <p className="text-gray-600">{item.priceLabel}</p>
 
-                  {/* Quantity controls */}
                   <div className="mt-3 inline-flex items-center gap-2">
-                    <button
-                      onClick={() => handleQtyChange(index, Math.max(1, qty - 1))}
-                      className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
-                      aria-label="decrease"
-                    >
-                      −
-                    </button>
+                    <button onClick={() => handleQtyChange(index, qty - 1)} className="px-3 py-1 bg-gray-200 rounded">−</button>
                     <div className="px-4 py-1 w-10 text-center border rounded">{qty}</div>
-                    <button
-                      onClick={() => handleQtyChange(index, qty + 1)}
-                      className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
-                      aria-label="increase"
-                    >
-                      +
-                    </button>
+                    <button onClick={() => handleQtyChange(index, qty + 1)} className="px-3 py-1 bg-gray-200 rounded">+</button>
                   </div>
 
                   <div className="mt-3 flex gap-2 items-center">
-                    <button
-                      onClick={() => onRemoveFromCart(index)}
-                      className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    >
+                    <button onClick={() => onRemoveFromCart(index)} className="px-4 py-2 bg-red-500 text-white rounded">
                       Remove
                     </button>
 
-                    <div className="self-center text-sm text-gray-700">
-                      Item total: <span className="font-semibold">Rs. {formatPrice(itemTotal)}</span>
+                    <div className="text-sm">
+                      Item total: <b>₹{formatPrice(itemTotal)}</b>
                     </div>
                   </div>
                 </div>
@@ -88,8 +70,20 @@ const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
             })}
           </div>
 
-          <div className="mt-6 p-4 border rounded-lg shadow-md text-center">
-            <h2 className="text-2xl font-bold">Total Price: Rs. {formatPrice(totalPrice)}</h2>
+          {/* ✅ BILL SUMMARY */}
+          <div className="mt-6 p-4 border rounded-lg shadow-md max-w-lg mx-auto text-center">
+            <h2 className="text-lg">Subtotal: ₹{formatPrice(subTotal)}</h2>
+
+            {discount > 0 && (
+              <h2 className="text-green-600 font-semibold">
+                🎉 Discount Applied: -₹{discount}
+              </h2>
+            )}
+
+            <h2 className="text-2xl font-bold mt-2">
+              Final Payable: ₹{formatPrice(finalTotal)}
+            </h2>
+
             <Link to="/payment">
               <button className="mt-4 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
                 Proceed to Buy
