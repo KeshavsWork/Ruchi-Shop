@@ -47,7 +47,6 @@ const Manager = ({ onAddToCart }) => {
     setQtys((prev) => ({ ...prev, [id]: Math.max(1, val) }));
 
   const handleAdd = (product) => {
-    // ✅ LOGIN REQUIRED
     const user = getUser();
     if (!user) {
       navigate("/login", { state: { from: "/" } });

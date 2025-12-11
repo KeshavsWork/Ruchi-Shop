@@ -1,0 +1,38 @@
+[
+    {
+        "user": "Keshav",
+        "items": [
+            {
+                "id": 1,
+                "name": "Almonds",
+                "priceUnit": 960.0,
+                "qty": 2
+            },
+            {
+                "id": 6,
+                "name": "Figs",
+                "priceUnit": 1600.0,
+                "qty": 1
+            },
+            {
+                "id": 2,
+                "name": "Pistachios",
+                "priceUnit": 1400.0,
+                "qty": 1
+            }
+        ],
+        "totalAmount": 4770.0
+    },
+    {
+        "user": "Keshav",
+        "items": [
+            {
+                "id": 2,
+                "name": "Pistachios",
+                "priceUnit": 1400.0,
+                "qty": 1
+            }
+        ],
+        "totalAmount": 1400.0
+    }
+]

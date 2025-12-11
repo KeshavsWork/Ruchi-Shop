@@ -34,6 +34,7 @@ const Navbar = () => {
     removeToken();
     setUser(null);
     navigate("/");
+    setCartCount(0);
   };
 
   return (
@@ -61,7 +62,6 @@ const Navbar = () => {
         {/* USER LOGIN / AVATAR */}
         {user ? (
           <div className="flex items-center gap-3">
-            {/* Avatar */}
             <div className="w-10 h-10 rounded-full bg-white text-orange-600 font-bold flex items-center justify-center">
               {user.name?.charAt(0)?.toUpperCase() || "U"}
             </div>

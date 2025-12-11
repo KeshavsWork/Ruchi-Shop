@@ -18,14 +18,12 @@ const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
     if (onUpdateQty) onUpdateQty(index, newQty);
   };
 
-  // ✅ SUBTOTAL
   const subTotal = localCart.reduce((sum, item) => {
     const unit = item.priceUnit ?? 0;
     const qty = item.qty ?? 1;
     return sum + unit * qty;
   }, 0);
 
-  // ✅ DISCOUNT LOGIC
   const discount = subTotal > 2500 ? 150 : 0;
   const finalTotal = subTotal - discount;
 
@@ -70,13 +68,12 @@ const Cart = ({ cartItems = [], onRemoveFromCart, onUpdateQty }) => {
             })}
           </div>
 
-          {/* ✅ BILL SUMMARY */}
           <div className="mt-6 p-4 border rounded-lg shadow-md max-w-lg mx-auto text-center">
             <h2 className="text-lg">Subtotal: ₹{formatPrice(subTotal)}</h2>
 
             {discount > 0 && (
               <h2 className="text-green-600 font-semibold">
-                🎉 Discount Applied: -₹{discount}
+                 Discount Applied: -₹{discount}
               </h2>
             )}
 

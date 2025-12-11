@@ -22,7 +22,6 @@ const parseUnitPrice = (price) => {
 };
 
 function App() {
-  // ✅ Load & normalize cart from localStorage
   const [cartItems, setCartItems] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('cart')) || [];
@@ -43,12 +42,10 @@ function App() {
     }
   });
 
-  // ✅ Keep localStorage synced
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // ✅ ADD TO CART (LIVE NAVBAR UPDATE)
   const handleAddToCart = (product, qty = 1) => {
     setCartItems((prev) => {
       const idx = prev.findIndex(p => p.id === product.id);
@@ -68,7 +65,6 @@ function App() {
         ];
       }
 
-      // ✅ Instant navbar update
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       window.dispatchEvent(new Event("storage"));
 
@@ -76,12 +72,10 @@ function App() {
     });
   };
 
-  // ✅ REMOVE FROM CART (LIVE NAVBAR UPDATE)
   const handleRemoveFromCart = (index) => {
     setCartItems((prev) => {
       const updated = prev.filter((_, i) => i !== index);
 
-      // ✅ Instant navbar update
       localStorage.setItem("cart", JSON.stringify(updated));
       window.dispatchEvent(new Event("storage"));
 
@@ -89,7 +83,6 @@ function App() {
     });
   };
 
-  // ✅ UPDATE QTY (LIVE NAVBAR UPDATE)
   const handleUpdateQty = (index, newQty) => {
     setCartItems((prev) => {
       const copy = [...prev];
@@ -97,7 +90,6 @@ function App() {
 
       copy[index] = { ...copy[index], qty: newQty };
 
-      // ✅ Instant navbar update
       localStorage.setItem("cart", JSON.stringify(copy));
       window.dispatchEvent(new Event("storage"));
 
@@ -110,7 +102,6 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          {/* ✅ HOME */}
           <Route
             path="/"
             element={
@@ -121,9 +112,9 @@ function App() {
                 <Footer />
               </>
             }
+            
           />
 
-          {/* ✅ CART */}
           <Route
             path="/cart"
             element={
@@ -135,7 +126,6 @@ function App() {
             }
           />
 
-          {/* ✅ OTHER ROUTES */}
           <Route path="/payment" element={<><Navbar /><Payment /><Footer /></>} />
           <Route path="/login" element={<><Navbar /><Login /><Footer /></>} />
           <Route path="/signup" element={<><Navbar /><Signup /><Footer /></>} />
