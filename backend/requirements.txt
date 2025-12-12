@@ -8,3 +8,9 @@ uvicorn[standard]
 # passlib[bcrypt]
 # python-multipart
 # python -m pip install "pymongo[srv]"
+motor
+python-dotenv
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+pydantic[email]

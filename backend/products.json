@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Cashew",
+    "category": "Dry Fruits",
+    "priceUnit": 960,
+    "priceLabel": "Rs.960/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/kaju-raw-5.jpg" }],
+    "stock": 50,
+    "description": "Premium quality cashews, freshly packed.",
+    "isActive": true
+  },
+  {
+    "name": "Almonds",
+    "category": "Dry Fruits",
+    "priceUnit": 940,
+    "priceLabel": "Rs.940/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/Almo.jpg" }],
+    "stock": 60,
+    "description": "High-quality almonds sourced directly from farms.",
+    "isActive": true
+  },
+  {
+    "name": "Pistachios",
+    "category": "Dry Fruits",
+    "priceUnit": 1400,
+    "priceLabel": "Rs.1400/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/Pistachios.jpg" }],
+    "stock": 30,
+    "description": "Premium pistachios, crispy and fresh.",
+    "isActive": true
+  },
+  {
+    "name": "Kharik",
+    "category": "Dry Fruits",
+    "priceUnit": 320,
+    "priceLabel": "Rs.320/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/Kharik.webp" }],
+    "stock": 40,
+    "description": "Sun-dried kharik, perfect for healthy snacking.",
+    "isActive": true
+  },
+  {
+    "name": "Raisins",
+    "category": "Dry Fruits",
+    "priceUnit": 650,
+    "priceLabel": "Rs.650/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/raisin.jpg" }],
+    "stock": 70,
+    "description": "Golden raisins, naturally sweet and fresh.",
+    "isActive": true
+  },
+  {
+    "name": "Walnuts",
+    "category": "Dry Fruits",
+    "priceUnit": 1300,
+    "priceLabel": "Rs.1300/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/Walnut.jpg" }],
+    "stock": 25,
+    "description": "Fresh and crunchy walnuts, rich in nutrients.",
+    "isActive": true
+  },
+  {
+    "name": "Figs",
+    "category": "Dry Fruits",
+    "priceUnit": 1600,
+    "priceLabel": "Rs.1600/kg",
+    "unit": "kg",
+    "images": [{ "url": "/images/Figs.png" }],
+    "stock": 20,
+    "description": "Premium dried figs, soft and delicious.",
+    "isActive": true
+  },
+  {
+    "name": "Black Pepper",
+    "category": "Masalas",
+    "priceUnit": 450,
+    "priceLabel": "Rs.450/250g",
+    "unit": "250g",
+    "images": [{ "url": "/images/Miri.jpg" }],
+    "stock": 100,
+    "description": "Pure black pepper kernels with strong aroma.",
+    "isActive": true
+  },
+  {
+    "name": "Cardamom",
+    "category": "Masalas",
+    "priceUnit": 1400,
+    "priceLabel": "Rs.1400/250g",
+    "unit": "250g",
+    "images": [{ "url": "/images/Cardamom.jpg" }],
+    "stock": 80,
+    "description": "Premium cardamom pods, aromatic and fresh.",
+    "isActive": true
+  }
+]
